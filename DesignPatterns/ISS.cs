@@ -1,8 +1,8 @@
 namespace DesignPatterns
 {
-    public class ISS
+    public class ISS : Imposto
     {
-        public double CalculoISS(Orcamento orcamento)
+        public double Calcula(Orcamento orcamento)
         {
             return orcamento.Valor * 0.05;
         }
