@@ -15,13 +15,13 @@ namespace DesignPatterns
 
             if( "ICMS".Equals(imposto))
             {
-                double icms = orcamento.Valor* 0.1;
+                double icms = new ICMS().CalculoICMS(orcamento);
                 Console.WriteLine(icms);
             }
             else if( "ISS".Equals(imposto))
             {
-            double iss = orcamento.Valor * 0.05;
-             Console.WriteLine(iss);
+                double iss = new ISS().CalculoISS(orcamento);
+                Console.WriteLine(iss);
             }
         }
         
