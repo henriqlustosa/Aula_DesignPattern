@@ -4,20 +4,15 @@ namespace DesignPatterns
     {
         public double Calcula(Orcamento orcamento)
         {
-            //1º Regra: Mais de 5 itens
-            if(orcamento.Itens.Count >5)
-            {
-                return orcamento.Valor * 0.1;
-            }
-            //2º Regra: O valor do orcamento eh maior que 500
-            else if(orcamento.Valor > 500)
-            {
-                return orcamento.Valor * 0.007;
-            }
+          double desconto = new DescontoPorCincoItens().Desconta(orcamento);
+          if (desconto == 0)
+          {
+              desconto = new DescontoPorMaisQuinhentosReais().Desconta(orcamento);
 
-            return 0;
+              // if (desconto == 0) ...
+          }
 
-            // com as regras de desconto
+        return desconto;
         }
 
     }
