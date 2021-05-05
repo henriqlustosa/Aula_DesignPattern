@@ -4,15 +4,14 @@ namespace DesignPatterns
     {
         public double Calcula(Orcamento orcamento)
         {
-          double desconto = new DescontoPorCincoItens().Desconta(orcamento);
-          if (desconto == 0)
-          {
-              desconto = new DescontoPorMaisQuinhentosReais().Desconta(orcamento);
-
-              // if (desconto == 0) ...
-          }
-
-        return desconto;
+            Desconto d1 = new DescontoPorCincoItens() ;
+            Desconto d2 = new DescontoPorMaisQuinhentosReais();
+            Desconto d3 = new SemDesconto();
+            
+            d1.Proximo = d2;
+            d2.Proximo = d3;
+            
+          return d1.Desconta(orcamento);
         }
 
     }
