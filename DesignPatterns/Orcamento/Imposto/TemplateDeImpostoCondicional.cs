@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DesignPatterns.Orcamento.Imposto
+namespace DesignPatterns
 {
-    class TemplateDeImpostoCondicional : IImposto
+    public abstract class  TemplateDeImpostoCondicional : IImposto
     {
-        public double  Calcula(Orcamento orcamento)
+        public double Calcula(Orcamento orcamento)
         {
             if (DeveUsarMaximaTaxacao(orcamento))
             {
@@ -16,5 +16,10 @@ namespace DesignPatterns.Orcamento.Imposto
             }
             return MinimaTaxacao(orcamento);
         }
+        public abstract bool DeveUsarMaximaTaxacao(Orcamento orcamento);
+        public abstract double MaximaTaxacao(Orcamento orcamento);
+
+        public abstract double MinimaTaxacao(Orcamento orcamento);
+
     }
 }

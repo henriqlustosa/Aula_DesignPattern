@@ -6,19 +6,24 @@ using System.Threading.Tasks;
 
 namespace DesignPatterns
 {
-    class IKCP
+    public class IKCP : TemplateDeImpostoCondicional
     {
-        public double Calcula(Orcamento orcamento)
+        public override bool DeveUsarMaximaTaxacao(Orcamento orcamento)
         {
-            if (orcamento.Valor >= 500 )
-            {
-                return orcamento.Valor * 0.1;
-
-            }
-
-            return orcamento.Valor * 0.006;
-
+            return orcamento.Valor >= 500;
         }
-      
+
+        public override double MaximaTaxacao(Orcamento orcamento)
+        {
+            return orcamento.Valor * 0.1;
+        }
+
+        public override double MinimaTaxacao(Orcamento orcamento)
+        {
+            return orcamento.Valor * 0.006;
+        }
+
+
+
     }
 }

@@ -6,22 +6,27 @@ using System.Threading.Tasks;
 
 namespace DesignPatterns
 {
-    public class IPPP
+    public class IPPP : TemplateDeImpostoCondicional
     {
-        public double Calcula(Orcamento orcamento)
+        public override bool DeveUsarMaximaTaxacao(Orcamento orcamento)
         {
-            if(orcamento.Valor > 500 && temItemMaiorQue100ReaisNo(orcamento))
-            {
-                return orcamento.Valor * 0.1;
-
-            }
-
-            return orcamento.Valor * 0.006;
-
+            return orcamento.Valor > 500 && temItemMaiorQue100ReaisNo(orcamento);
         }
+
+        public override double MaximaTaxacao(Orcamento orcamento)
+        {
+            return orcamento.Valor * 0.03;
+        }
+
+        public override double MinimaTaxacao(Orcamento orcamento)
+        {
+            return orcamento.Valor * 0.007;
+        }
+
+
         private bool temItemMaiorQue100ReaisNo(Orcamento orcamento)
         {
-            foreach(Item item in orcamento.Itens)
+            foreach (Item item in orcamento.Itens)
             {
                 if (item.Valor > 100)
                     return true;

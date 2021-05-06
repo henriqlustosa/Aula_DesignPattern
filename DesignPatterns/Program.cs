@@ -7,38 +7,38 @@ namespace DesignPatterns
     {
         static void Main(string[] args)
         {
-            //Imposto iss = new ISS();
-            //Imposto icms = new ICMS();
+            IImposto ikcp = new IKCP();
+            IImposto ippp = new IPPP();
 
-            //Orcamento orcamento = new Orcamento(500.0);
-            
-            
+            Orcamento orcamento = new Orcamento(500.0);
 
-            // Não precisa utilizar a classe CalculadorDeImposto pois no metodo RealizaCalcula realiza a 
-            // seguinte operação:
-            
+
+
+            //Não precisa utilizar a classe CalculadorDeImposto pois no metodo RealizaCalcula realiza a
+            //seguinte operação:
+
             // Console.WriteLine(imposto.Calcula(orcamento));
-            
-            // Que pode ser alterado nesse código para ->
-            
-            // Console.WriteLine(iss.Calcula(orcamento))
-            // Console.WriteLine(icms.Calcula(orcamento))
+
+            //Que pode ser alterado nesse código para->
+
+            Console.WriteLine(ikcp.Calcula(orcamento));
+            Console.WriteLine(ippp.Calcula(orcamento));
 
 
             //Calculador de Imposto é responsável para impressão do valor do imposto
 
-            //CalculadorDeImpostos calculador = new CalculadorDeImpostos();
-            
-            //calculador.RealizaCalculo(orcamento, icms);
-            //calculador.RealizaCalculo(orcamento, iss);
+            CalculadorDeImpostos calculador = new CalculadorDeImpostos();
 
-            //Console.ReadKey();
+            calculador.RealizaCalculo(orcamento, ikcp);
+            calculador.RealizaCalculo(orcamento, ippp);
+
+            Console.ReadKey();
 
             //CalculadorDeDescontos calculador_desconto = new CalculadorDeDescontos();
 
             //Orcamento orcamento = new Orcamento(100);
             //orcamento.AdicionaItem(new Item("CANETA", 500));
-          
+
 
             //double desconto = calculador_desconto.Calcula(orcamento);
             //Console.WriteLine(desconto);
@@ -49,17 +49,17 @@ namespace DesignPatterns
             // Teste do design pattern - chain of responsability para formatação da exibição dos 
             // dados da conta
 
-            Conta conta = new Conta("Jaqueline", 2000);
-            Formatador formatador = new Formatador();
+            //Conta conta = new Conta("Jaqueline", 2000);
+            //Formatador formatador = new Formatador();
 
-     
-      
-            formatador.Formata(new Requisicao(Formato.XML), conta);
-            formatador.Formata(new Requisicao(Formato.CSV), conta);
 
-            formatador.Formata(new Requisicao(Formato.PORCENTO), conta);
 
-            Console.ReadKey();
+            //formatador.Formata(new Requisicao(Formato.XML), conta);
+            //formatador.Formata(new Requisicao(Formato.CSV), conta);
+
+            //formatador.Formata(new Requisicao(Formato.PORCENTO), conta);
+
+            //Console.ReadKey();
 
 
         }
