@@ -7,12 +7,16 @@ namespace DesignPatterns
     {
         static void Main(string[] args)
         {
-            IImposto ikcp = new IKCP();
-            IImposto ippp = new IPPP();
+            //IImposto ikcp = new IKCP();
+            //IImposto ippp = new IPPP();
+            IImposto ihit = new IHIT();
 
-            Orcamento orcamento = new Orcamento(500.0);
+            Orcamento orcamento = new Orcamento(1000.0);
 
+            orcamento.AdicionaItem(new Item("CANETA", 1000));
+            orcamento.AdicionaItem(new Item("CANETA",1000));
 
+            orcamento.AdicionaItem(new Item("LAPIS", 200));
 
             //Não precisa utilizar a classe CalculadorDeImposto pois no metodo RealizaCalcula realiza a
             //seguinte operação:
@@ -21,16 +25,18 @@ namespace DesignPatterns
 
             //Que pode ser alterado nesse código para->
 
-            Console.WriteLine(ikcp.Calcula(orcamento));
-            Console.WriteLine(ippp.Calcula(orcamento));
-
+            //Console.WriteLine(ikcp.Calcula(orcamento));
+            //Console.WriteLine(ippp.Calcula(orcamento));
+            Console.WriteLine(ihit.Calcula(orcamento));
+           
 
             //Calculador de Imposto é responsável para impressão do valor do imposto
 
             CalculadorDeImpostos calculador = new CalculadorDeImpostos();
 
-            calculador.RealizaCalculo(orcamento, ikcp);
-            calculador.RealizaCalculo(orcamento, ippp);
+            //calculador.RealizaCalculo(orcamento, ikcp);
+            //calculador.RealizaCalculo(orcamento, ippp);
+            calculador.RealizaCalculo(orcamento, ihit);
 
             Console.ReadKey();
 
