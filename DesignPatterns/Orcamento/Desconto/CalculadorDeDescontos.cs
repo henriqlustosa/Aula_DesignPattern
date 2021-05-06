@@ -4,9 +4,9 @@ namespace DesignPatterns
     {
         public double Calcula(Orcamento orcamento)
         {
-            Desconto d1 = new DescontoPorCincoItens() ;
-            Desconto d2 = new DescontoPorMaisQuinhentosReais();
-            Desconto d3 = new SemDesconto();
+            IDesconto d1 = new DescontoPorCincoItens() ;
+            IDesconto d2 = new DescontoPorMaisQuinhentosReais();
+            IDesconto d3 = new SemDesconto();
             
             d1.Proximo = d2;
             d2.Proximo = d3;

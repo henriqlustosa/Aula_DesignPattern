@@ -1,10 +1,10 @@
 namespace DesignPatterns
 {
-    public class ISS : Imposto
+    public class ICMS : IImposto
     {
         public double Calcula(Orcamento orcamento)
         {
-            return orcamento.Valor * 0.05;
+            return orcamento.Valor * 0.1;
         }
 
 

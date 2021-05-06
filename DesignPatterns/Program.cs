@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 
 namespace DesignPatterns
 {
@@ -33,18 +34,32 @@ namespace DesignPatterns
 
             //Console.ReadKey();
 
-            CalculadorDeDescontos calculador_desconto = new CalculadorDeDescontos();
+            //CalculadorDeDescontos calculador_desconto = new CalculadorDeDescontos();
 
-            Orcamento orcamento = new Orcamento(100);
-            orcamento.AdicionaItem(new Item("CANETA", 500));
+            //Orcamento orcamento = new Orcamento(100);
+            //orcamento.AdicionaItem(new Item("CANETA", 500));
           
 
-            double desconto = calculador_desconto.Calcula(orcamento);
-            Console.WriteLine(desconto);
+            //double desconto = calculador_desconto.Calcula(orcamento);
+            //Console.WriteLine(desconto);
+
+            //Console.ReadKey();
+
+
+            // Teste do design pattern - chain of responsability para formatação da exibição dos 
+            // dados da conta
+
+            Conta conta = new Conta("Jaqueline", 2000);
+            Formatador formatador = new Formatador();
+
+     
+      
+            formatador.Formata(new Requisicao(Formato.XML), conta);
+            formatador.Formata(new Requisicao(Formato.CSV), conta);
+
+            formatador.Formata(new Requisicao(Formato.PORCENTO), conta);
 
             Console.ReadKey();
-
-
 
 
         }

@@ -1,10 +1,10 @@
 namespace DesignPatterns
 {
-    public interface Desconto
+    public interface IDesconto
     {
             double Desconta(Orcamento orcamento);
 
-            Desconto Proximo{ get; set; }
+            IDesconto Proximo{ get; set; }
 
 
     }
