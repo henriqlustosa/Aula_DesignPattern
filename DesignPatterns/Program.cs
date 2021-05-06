@@ -1,5 +1,6 @@
 ﻿
 using System;
+using System.Collections.Generic;
 
 namespace DesignPatterns
 {
@@ -9,14 +10,14 @@ namespace DesignPatterns
         {
             //IImposto ikcp = new IKCP();
             //IImposto ippp = new IPPP();
-            IImposto ihit = new IHIT();
+            //IImposto ihit = new IHIT();
 
-            Orcamento orcamento = new Orcamento(1000.0);
+            //Orcamento orcamento = new Orcamento(1000.0);
 
-            orcamento.AdicionaItem(new Item("CANETA", 1000));
-            orcamento.AdicionaItem(new Item("CANETA",1000));
+            //orcamento.AdicionaItem(new Item("CANETA", 1000));
+            //orcamento.AdicionaItem(new Item("CANETA",1000));
 
-            orcamento.AdicionaItem(new Item("LAPIS", 200));
+            //orcamento.AdicionaItem(new Item("LAPIS", 200));
 
             //Não precisa utilizar a classe CalculadorDeImposto pois no metodo RealizaCalcula realiza a
             //seguinte operação:
@@ -27,18 +28,18 @@ namespace DesignPatterns
 
             //Console.WriteLine(ikcp.Calcula(orcamento));
             //Console.WriteLine(ippp.Calcula(orcamento));
-            Console.WriteLine(ihit.Calcula(orcamento));
-           
+            //Console.WriteLine(ihit.Calcula(orcamento));
+
 
             //Calculador de Imposto é responsável para impressão do valor do imposto
 
-            CalculadorDeImpostos calculador = new CalculadorDeImpostos();
+            //CalculadorDeImpostos calculador = new CalculadorDeImpostos();
 
             //calculador.RealizaCalculo(orcamento, ikcp);
             //calculador.RealizaCalculo(orcamento, ippp);
-            calculador.RealizaCalculo(orcamento, ihit);
+            //calculador.RealizaCalculo(orcamento, ihit);
 
-            Console.ReadKey();
+            //Console.ReadKey();
 
             //CalculadorDeDescontos calculador_desconto = new CalculadorDeDescontos();
 
@@ -66,6 +67,27 @@ namespace DesignPatterns
             //formatador.Formata(new Requisicao(Formato.PORCENTO), conta);
 
             //Console.ReadKey();
+
+
+            ContaBanco conta_01 = new ContaBanco("Henrique Lustosa", "010203-00", "030201-00", 500);
+            ContaBanco conta_02 = new ContaBanco("Sabrina", "010204-00", "030201-01", 500);
+            ContaBanco conta_03 = new ContaBanco("Amariles", "010205-00", "030201-02", 500);
+            ContaBanco conta_04 = new ContaBanco("Joice Maria", "010206-00", "030201-03", 500);
+
+
+            IRelatorio relatorioSimples = new RelatorioSimples();
+            IRelatorio relatorioComplexo = new RelatorioComplexo();
+
+            List<ContaBanco> contas = new List<ContaBanco>();
+            contas.Add(conta_01);
+            contas.Add(conta_02);
+            contas.Add(conta_03);
+            contas.Add(conta_04);
+
+            relatorioSimples.Imprime(contas);
+            Console.ReadKey();
+            relatorioComplexo.Imprime(contas);
+            Console.ReadKey();
 
 
         }
