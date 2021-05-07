@@ -99,9 +99,18 @@ namespace DesignPatterns
             //           ou
             //Imposto iss = new ISS(new ICMS( new ICPP));  - solucao mais elegante
 
-            IImposto iss = new ISS();
-
             Orcamento orcamento = new Orcamento(500);
+
+            orcamento.AdicionaItem(new Item("CANETA", 1000));
+            orcamento.AdicionaItem(new Item("CANETA",1000));
+            orcamento.AdicionaItem(new Item("LAPIS", 200));
+            orcamento.AdicionaItem(new Item("CANETA", 1000));
+            orcamento.AdicionaItem(new Item("CANETA", 1000));
+            orcamento.AdicionaItem(new Item("LAPIS", 200));
+
+            Imposto iss = new ISS(new ICMS(new IHIT()));
+
+           
 
             double valor = iss.Calcula(orcamento);
             
