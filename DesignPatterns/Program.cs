@@ -99,28 +99,58 @@ namespace DesignPatterns
             //           ou
             //Imposto iss = new ISS(new ICMS( new ICPP));  - solucao mais elegante
 
-            Orcamento orcamento = new Orcamento(500);
+            //Orcamento orcamento = new Orcamento(500);
 
-            orcamento.AdicionaItem(new Item("CANETA", 1000));
-            orcamento.AdicionaItem(new Item("CANETA",1000));
-            orcamento.AdicionaItem(new Item("LAPIS", 200));
-            orcamento.AdicionaItem(new Item("CANETA", 1000));
-            orcamento.AdicionaItem(new Item("CANETA", 1000));
-            orcamento.AdicionaItem(new Item("LAPIS", 200));
+            //orcamento.AdicionaItem(new Item("CANETA", 1000));
+            //orcamento.AdicionaItem(new Item("CANETA",1000));
+            //orcamento.AdicionaItem(new Item("LAPIS", 200));
+            //orcamento.AdicionaItem(new Item("CANETA", 1000));
+            //orcamento.AdicionaItem(new Item("CANETA", 1000));
+            //orcamento.AdicionaItem(new Item("LAPIS", 200));
 
-            Imposto iss = new ISS(new ICMS(new IHIT()));
+            //Imposto impostoComplexo = new ISS(new ICMS(new ImpostoMuitoAlto()));
 
-           
 
-            double valor = iss.Calcula(orcamento);
-            
-            Console.WriteLine(valor);
+
+            //double valor = impostoComplexo.Calcula(orcamento);
+
+            //Console.WriteLine(valor);
+
+            //Console.ReadKey();
+
+
+            ContaBanco conta_01 = new ContaBanco("Henrique Lustosa", "019203-00", "030201-00", 12, new DateTime(2021, 06, 14));
+            ContaBanco conta_02 = new ContaBanco("Sabrina", "010204-00", "039201-01", 50000000, new DateTime(2020, 07, 20));
+            ContaBanco conta_03 = new ContaBanco("Amariles", "010205-00", "033201-02", 100, new DateTime(2021, 01, 03));
+            ContaBanco conta_04 = new ContaBanco("Joice Maria", "010206-00", "036201-03", 50, new DateTime(2021, 02, 02));
+            ContaBanco conta_05 = new ContaBanco("Luciano", "010203-01", "037201-00", 2000, new DateTime(2021, 04, 14));
+            ContaBanco conta_06 = new ContaBanco("Lucas", "010204-02", "038201-01", 50000, new DateTime(2020, 03, 20));
+            ContaBanco conta_07 = new ContaBanco("Simone", "010205-03", "038201-02", 100, new DateTime(2021, 05, 03));
+            ContaBanco conta_08 = new ContaBanco("Sineide", "010206-04", "038201-03", 55, new DateTime(2021, 05, 02));
+
+
+            List<ContaBanco> contas = new List<ContaBanco>();
+
+            contas.Add(conta_01);
+            contas.Add(conta_02);
+            contas.Add(conta_03);
+            contas.Add(conta_04);
+            contas.Add(conta_05);
+            contas.Add(conta_06);
+            contas.Add(conta_07);
+            contas.Add(conta_08);
+
+            Filtro filtro =  new DataAberturaMes( new SaldoMaior500(new SaldoMenor100()));
+
+            IList<ContaBanco> contasFiltradas = filtro.Filtra(contas);
+
+            foreach(ContaBanco c in contasFiltradas)
+            {
+                string v = c.DataAbertura.ToString();
+                Console.WriteLine(c.Nome + " - " + c.Numero + " - " + c.Agencia + " - " + c.Saldo + " - " + v );
+            }
 
             Console.ReadKey();
-
-
-
-
         }
     }
 }
