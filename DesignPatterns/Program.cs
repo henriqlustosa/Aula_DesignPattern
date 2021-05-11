@@ -173,15 +173,39 @@ namespace DesignPatterns
             // Onde os estados da classe ContaBanco são os seguintes:
             // Positivo e Negativo
             // e os métodos implementados pelas classses concretas são  Saca() e Deposita()
-            
-            ContaBanco conta_01 = new ContaBanco("Henrique Lustosa", "019203-00", "030201-00", 12, new DateTime(2021, 06, 14));
 
-            conta_01.Saca(500);
-            conta_01.Saca(500);
-            Console.WriteLine(conta_01.Saldo);
-            conta_01.Deposita(1000);
+            //ContaBanco conta_01 = new ContaBanco("Henrique Lustosa", "019203-00", "030201-00", 12, new DateTime(2021, 06, 14));
+            //ContaBanco conta_02 = new ContaBanco("Sabrina", "010204-00", "039201-01", 50000000, new DateTime(2020, 07, 20));
 
-            Console.WriteLine(conta_01.Saldo);
+            //conta_01.Saca(500);
+            //conta_01.Saca(500);
+            //Console.WriteLine(conta_01.Saldo);
+            //conta_01.Deposita(1000);
+
+            //Console.WriteLine(conta_01.Saldo);
+
+            // Implementação do Design Pattern Builder
+
+            IList<ItemDaNota> itens = new List<ItemDaNota>();
+
+            double valorTotal = 0;
+
+            foreach(ItemDaNota item in itens)
+            {
+                valorTotal += item.Valor;
+
+            }
+
+            double impostos = valorTotal * 0.05;
+
+
+            NotaFiscal nf = new NotaFiscal("RazaoSocial", "cnpj", DateTime.Now, valorTotal, impostos, itens, "obs qualquer");
+
+            Console.ReadKey();
+
+
+
+
         }
     }
 }
