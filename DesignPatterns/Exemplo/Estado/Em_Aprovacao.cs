@@ -8,8 +8,22 @@ namespace DesignPatterns
 {
     public class Em_Aprovacao : IEstadoDeUmOrcamento
     {
+        // Variável que indica se a aplicação do desconto extra já foi realizada alguma vez.
+        bool descontoAplicado = false;
+
         public void AplicaDescontoExtra(Orcamento orcamento)
         {
+
+            // Condicional para verificação do desconto aplicado
+            if (!descontoAplicado)
+            {
+                orcamento.Valor -= orcamento.Valor * 0.05;
+                descontoAplicado = true;
+            }
+            else
+            {
+                throw new Exception("Desconto já aplicado!");
+            }
             orcamento.Valor = orcamento.Valor - (orcamento.Valor * 0.05);
         }
 
