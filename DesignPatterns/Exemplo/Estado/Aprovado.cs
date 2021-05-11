@@ -8,7 +8,7 @@ namespace DesignPatterns
 {
     public class Aprovado : IEstadoDeUmOrcamento
     {
-        // Variável para indicar se a aplicação do desconto extra já foi aplicado pelo cliente
+        // Variável para indicar se a aplicação do desconto extra já foi aplicado para o  cliente
         private bool descontoAplicado = false;
         public void AplicaDescontoExtra(Orcamento orcamento)
         {

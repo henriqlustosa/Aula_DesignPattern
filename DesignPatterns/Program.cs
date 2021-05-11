@@ -152,21 +152,36 @@ namespace DesignPatterns
 
             //Console.ReadKey();
 
-            Orcamento reforma = new Orcamento(500);
-            Console.WriteLine(reforma.Valor);
+            // Orcamento reforma = new Orcamento(500);
+            // Console.WriteLine(reforma.Valor);
 
-            reforma.AplicaDescontoExtra();
-            Console.WriteLine(reforma.Valor);
+            // reforma.AplicaDescontoExtra();
+            // Console.WriteLine(reforma.Valor);
 
-            reforma.Aprova();
-            reforma.AplicaDescontoExtra();
-            Console.WriteLine(reforma.Valor);
+            // reforma.Aprova();
+            // reforma.AplicaDescontoExtra();
+            // Console.WriteLine(reforma.Valor);
 
-            reforma.Finaliza();
-            Console.WriteLine(reforma.Valor);
-          
+            // reforma.Finaliza();
+            // Console.WriteLine(reforma.Valor);
 
-           Console.ReadKey(); 
+
+            //Console.ReadKey(); 
+
+
+            // Implementação do Design Pattern State para um conta bancária
+            // Onde os estados da classe ContaBanco são os seguintes:
+            // Positivo e Negativo
+            // e os métodos implementados pelas classses concretas são  Saca() e Deposita()
+            
+            ContaBanco conta_01 = new ContaBanco("Henrique Lustosa", "019203-00", "030201-00", 12, new DateTime(2021, 06, 14));
+
+            conta_01.Saca(500);
+            conta_01.Saca(500);
+            Console.WriteLine(conta_01.Saldo);
+            conta_01.Deposita(1000);
+
+            Console.WriteLine(conta_01.Saldo);
         }
     }
 }

@@ -11,10 +11,10 @@ namespace DesignPatterns
         public String Nome { get; private set; }
         public String Numero { get; private set; }
         public String Agencia { get; private set; }
-        public double Saldo { get; private set; }
+        public double Saldo { get;  set; }
         public DateTime DataAbertura { get; private set; }
 
-
+        public IEstadoDaConta Estado;
         public ContaBanco(String nome, String numero, String agencia, double saldo, DateTime dataAbertura)
         {
             this.Nome = nome;
@@ -22,6 +22,21 @@ namespace DesignPatterns
             this.Agencia = agencia;
             this.Saldo = saldo;
             this.DataAbertura = dataAbertura;
+
+            if (saldo > 0)
+                this.Estado = new Positivo();
+            else
+                this.Estado = new Negativo();
+        }
+
+        public void Saca(double valor)
+        {
+            Estado.Saca(this, valor);
+        }
+
+        public void Deposita(double valor)
+        {
+            Estado.Deposita(this, valor);
         }
 
     }
