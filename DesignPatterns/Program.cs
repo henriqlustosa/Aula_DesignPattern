@@ -184,28 +184,46 @@ namespace DesignPatterns
 
             //Console.WriteLine(conta_01.Saldo);
 
-            // Implementação do Design Pattern Builder
-
-            IList<ItemDaNota> itens = new List<ItemDaNota>();
-
-            double valorTotal = 0;
-
-            foreach(ItemDaNota item in itens)
-            {
-                valorTotal += item.Valor;
-
-            }
-
-            double impostos = valorTotal * 0.05;
+            // Implementação do Design Pattern Builder: 
+            // Sem a utilização do Design Builder para criar uma nova nota fiscal
+            // a classe teste teria que seguir muitos passos que dificultariam
+            // a implementação. Além de um construtor recebendo muitos parâmetros.
 
 
-            NotaFiscal nf = new NotaFiscal("RazaoSocial", "cnpj", DateTime.Now, valorTotal, impostos, itens, "obs qualquer");
+            //IList<ItemDaNota> itens = new List<ItemDaNota>();
 
-            Console.ReadKey();
+            //double valorTotal = 0;
+
+            //foreach(ItemDaNota item in itens)
+            //{
+            //    valorTotal += item.Valor;
+
+            //}
+
+            //double impostos = valorTotal * 0.05;
 
 
+            //NotaFiscal nf = new NotaFiscal("RazaoSocial", "cnpj", DateTime.Now, valorTotal, impostos, itens, "obs qualquer");
 
+            //Console.ReadKey();
+
+
+            // Utilizando o construtor a classe teste fica mais intelegível para a criaçõa
+            // da nota fiscal.
+
+
+     
+          
+                NotaFiscal nf = new NotaFiscalBuilder().ParaEmpresa("Caelum")
+                                  .ComCnpj("123.456.789/0001-10")
+                                  .ComItem(new ItemDaNota("item 1", 100.0))
+                                  .ComItem(new ItemDaNota("item 2", 200.0))
+                                  .ComItem(new ItemDaNota("item 3", 300.0))
+                                  .ComObservacoes("entregar nf pessoalmente")
+                                  .NaDataAtual()
+                                  .Constroi();
 
         }
     }
+
 }
