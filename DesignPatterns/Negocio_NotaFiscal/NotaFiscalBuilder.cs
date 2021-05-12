@@ -71,9 +71,10 @@ namespace DesignPatterns
         {
             NotaFiscal nf = new NotaFiscal(RazaoSocial, Cnpj, Data, ValorTotal, Impostos, todosItens, Observacoes);
 
-            enviaPorEmail(nf);
-            salvaNoBanco(nf);
-            enviaPorSms(nf);
+            new EnviadorDeEmail().EnviaPorEmail(nf);
+            new NotaFiscalDAO().SalvaNoBanco(nf);
+            new EnviadorDeSms().EnviaPorSms(nf);
+            new Impressora().Imprime(nf);
 
 
             return nf;
