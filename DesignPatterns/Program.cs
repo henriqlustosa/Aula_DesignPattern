@@ -210,11 +210,19 @@ namespace DesignPatterns
 
             // Utilizando o construtor a classe teste fica mais intelegível para a criaçõa
             // da nota fiscal.
+            
+
+            // Implementando o Design Pattern Observer para controlar as ações que são realizadas no método Constroi da construção de uma nota fiscal
+
+            NotaFiscalBuilder builder = new NotaFiscalBuilder();
+
+            builder.AdicionaAcao(new Impressora());
+            builder.AdicionaAcao(new NotaFiscalDAO());
+            builder.AdicionaAcao(new EnviadorDeSms());
+            builder.AdicionaAcao(new EnviadorDeEmail());
 
 
-     
-          
-                NotaFiscal nf = new NotaFiscalBuilder().ParaEmpresa("Caelum")
+            NotaFiscal nf = builder.ParaEmpresa("Caelum")
                                   .ComCnpj("123.456.789/0001-10")
                                   .ComItem(new ItemDaNota("item 1", 100.0))
                                   .ComItem(new ItemDaNota("item 2", 200.0))

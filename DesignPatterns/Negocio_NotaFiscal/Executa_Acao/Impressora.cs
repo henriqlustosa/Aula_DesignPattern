@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace DesignPatterns
 {
-    class Impressora
+    class Impressora : AcaoAposGerarNota
     {
 
-        public void Imprime(NotaFiscal notaFiscal)
+        public void Executa(NotaFiscal notaFiscal)
         {
             Console.WriteLine("imprimindo notaFiscal");
         }

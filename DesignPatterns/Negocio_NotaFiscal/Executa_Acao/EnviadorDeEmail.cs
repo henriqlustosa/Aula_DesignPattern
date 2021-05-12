@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace DesignPatterns
 {
-    class EnviadorDeEmail
+    class EnviadorDeEmail : AcaoAposGerarNota
     {
-        public void EnviaPorEmail(NotaFiscal notaFiscal)
+        public void Executa(NotaFiscal notaFiscal)
         {
             Console.WriteLine("Simulação do envio por e-mail");
         }

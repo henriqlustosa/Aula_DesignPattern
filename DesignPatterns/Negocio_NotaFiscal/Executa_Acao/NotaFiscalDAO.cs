@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace DesignPatterns
 {
-    class NotaFiscalDAO
+    class NotaFiscalDAO : AcaoAposGerarNota
 
     {
-        public void SalvaNoBanco(NotaFiscal notaFiscal)
+        public void Executa(NotaFiscal notaFiscal)
         {
             Console.WriteLine("Simulando a inserção da Nota Fiscal no Banco de Dados");
         }

@@ -15,6 +15,7 @@ namespace DesignPatterns
         public DateTime Data { get; set; }
         public String Observacoes { get; set; }
         public IList<ItemDaNota> todosItens = new List<ItemDaNota>();
+        private IList<AcaoAposGerarNota> todasAcoesASeremExecutadas = new List<AcaoAposGerarNota>();
 
 
         public NotaFiscalBuilder ParaEmpresa(String razaoSocial)
@@ -70,15 +71,19 @@ namespace DesignPatterns
         public NotaFiscal Constroi()
         {
             NotaFiscal nf = new NotaFiscal(RazaoSocial, Cnpj, Data, ValorTotal, Impostos, todosItens, Observacoes);
+            foreach (AcaoAposGerarNota acao in todasAcoesASeremExecutadas)
+            {
+                acao.Executa(nf);
+            }
 
-            new EnviadorDeEmail().EnviaPorEmail(nf);
-            new NotaFiscalDAO().SalvaNoBanco(nf);
-            new EnviadorDeSms().EnviaPorSms(nf);
-            new Impressora().Imprime(nf);
 
 
             return nf;
 
+        }
+        public void AdicionaAcao(AcaoAposGerarNota novaAcao)
+        {
+            this.todasAcoesASeremExecutadas.Add(novaAcao);
         }
     }
 }
