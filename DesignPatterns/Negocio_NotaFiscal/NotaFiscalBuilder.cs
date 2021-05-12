@@ -46,12 +46,38 @@ namespace DesignPatterns
         {
             this.Data = DateTime.Now;
 
+           
+
             return this;
+        }
+
+        private void enviaPorEmail(NotaFiscal nf)
+        {
+            Console.WriteLine("Simulando o envio de Nota fiscal por email ");
+        }
+
+        private void salvaNoBanco(NotaFiscal nf)
+        {
+            Console.WriteLine("Simulando o salvamento da Nota fiscal  no Banco de Dados. ");
+
+        }
+
+        private void enviaPorSms(NotaFiscal nf)
+        {
+            Console.WriteLine("Simulando o envio da Nota Fiscal por SMS.");
         }
 
         public NotaFiscal Constroi()
         {
-            return new NotaFiscal(RazaoSocial, Cnpj, Data, ValorTotal, Impostos, todosItens, Observacoes);
+            NotaFiscal nf = new NotaFiscal(RazaoSocial, Cnpj, Data, ValorTotal, Impostos, todosItens, Observacoes);
+
+            enviaPorEmail(nf);
+            salvaNoBanco(nf);
+            enviaPorSms(nf);
+
+
+            return nf;
+
         }
     }
 }
