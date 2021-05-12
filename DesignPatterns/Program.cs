@@ -220,6 +220,7 @@ namespace DesignPatterns
             builder.AdicionaAcao(new NotaFiscalDAO());
             builder.AdicionaAcao(new EnviadorDeSms());
             builder.AdicionaAcao(new EnviadorDeEmail());
+            builder.AdicionaAcao(new Multiplicador(2));
 
 
             NotaFiscal nf = builder.ParaEmpresa("Caelum")
