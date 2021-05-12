@@ -52,21 +52,6 @@ namespace DesignPatterns
             return this;
         }
 
-        private void enviaPorEmail(NotaFiscal nf)
-        {
-            Console.WriteLine("Simulando o envio de Nota fiscal por email ");
-        }
-
-        private void salvaNoBanco(NotaFiscal nf)
-        {
-            Console.WriteLine("Simulando o salvamento da Nota fiscal  no Banco de Dados. ");
-
-        }
-
-        private void enviaPorSms(NotaFiscal nf)
-        {
-            Console.WriteLine("Simulando o envio da Nota Fiscal por SMS.");
-        }
 
         public NotaFiscal Constroi()
         {

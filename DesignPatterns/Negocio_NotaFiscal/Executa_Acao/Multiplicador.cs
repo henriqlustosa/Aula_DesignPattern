@@ -19,7 +19,7 @@ namespace DesignPatterns
 
         public void Executa(NotaFiscal notaFiscal)
         {
-            Console.WriteLine("Imprimindo o fator multiplicador: " + Fator);
+            Console.WriteLine(notaFiscal.ValorBruto * Fator);
         }
     }
 }
